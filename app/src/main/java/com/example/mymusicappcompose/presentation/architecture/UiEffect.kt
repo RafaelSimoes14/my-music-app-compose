@@ -1,0 +1,3 @@
+package com.example.mymusicappcompose.presentation.architecture
+
+interface UiEffect

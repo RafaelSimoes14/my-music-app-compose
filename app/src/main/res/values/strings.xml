@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MyMusicAppCompose</string>
+    <string name="button_back_description">Back button pressed</string>
+    <string name="sign_in_title">Welcome to Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="password_icon_description">Password icon pressed!</string>
+    <string name="email_icon_description">Email icon Pressed</string>
+    <string name="sign_up_title">Register User</string>
+    <string name="confirm_password">"Confirm the password "</string>
+    <string name="confirm_password_icon_description">Confirm the password icon pressed!</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="read_terms">Read Terms</string>
+    <string name="check_box">I declare that I have read and accept the terms of use.</string>
+    <string name="genres_title">Genres</string>
+    <string name="unable_to_register">Unable to register, please check e-mail!</string>
+    <string name="welcome_title">Welcome to MyMusicApp!</string>
+</resources>
