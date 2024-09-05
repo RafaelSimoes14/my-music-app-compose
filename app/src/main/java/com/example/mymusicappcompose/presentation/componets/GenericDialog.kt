@@ -16,6 +16,7 @@ import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,7 +32,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.example.mymusicappcompose.ui.preview.DarkModePreview
+import com.example.mymusicappcompose.ui.preview.LightModePreview
+import com.example.mymusicappcompose.ui.theme.MusicTheme
 import com.example.mymusicappcompose.ui.theme.MyMusicAppComposeTheme
+import com.example.mymusicappcompose.ui.theme.music
 
 @Composable
 fun GenericDialog(
@@ -55,7 +60,7 @@ fun GenericDialog(
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.White, shape = RoundedCornerShape(8.dp))
+                .background(MaterialTheme.music.background, shape = RoundedCornerShape(8.dp))
                 .padding(vertical = 20.dp)
         ) {
             Column(
@@ -142,7 +147,8 @@ fun GenericDialog(
     }
 }
 
-@Preview
+@LightModePreview
+@DarkModePreview
 @Composable
 fun SignOutDialogPreview() {
     MyMusicAppComposeTheme {

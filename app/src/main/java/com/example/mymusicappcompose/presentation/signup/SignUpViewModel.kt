@@ -23,19 +23,32 @@ class SignUpViewModel : MVIViewModel<SignUp.State, SignUp.Event, SignUp.Effect, 
 
                 oldState.copy(email = event.email)
             }
+
             is SignUp.Event.UpdatePassword -> {
-                val valid  = PasswordValidator().isValidAndEqual(event.password, state.value.confirmationPassword)
+                val valid = PasswordValidator().isValidAndEqual(
+                    event.password,
+                    state.value.confirmationPassword
+                )
                 setEvent { SignUp.Event.ValidConfirmPassword(valid) }
 
                 oldState.copy(password = event.password)
             }
+
             is SignUp.Event.UpdateConfirmPassword -> {
-                val valid = PasswordValidator().isValidAndEqual(state.value.password, event.confirmationPassword)
+                val valid = PasswordValidator().isValidAndEqual(
+                    state.value.password,
+                    event.confirmationPassword
+                )
                 setEvent { SignUp.Event.ValidConfirmPassword(valid) }
 
                 oldState.copy(confirmationPassword = event.confirmationPassword)
             }
-            is SignUp.Event.Success -> oldState.copy(isLoading = false, isSuccess = true)
+
+            is SignUp.Event.Success -> {
+                setEffect { SignUp.Effect.OnSuccess }
+                oldState.copy(isLoading = false, isSuccess = true)
+            }
+
             is SignUp.Event.Error -> oldState.copy(isLoading = false, error = event.throwable)
             is SignUp.Event.Clear -> oldState.copy(
                 error = null,
@@ -57,21 +70,16 @@ class SignUpViewModel : MVIViewModel<SignUp.State, SignUp.Event, SignUp.Effect, 
         }
     }
 
-
     private fun register() {
         viewModelScope.launch {
-            try {
-                setEvent { SignUp.Event.Loading }
-                when (val result = useCase.signUp(state.value.email, state.value.password)) {
-                    is Result.Error -> setEvent { SignUp.Event.Error(result.error) }
-                    is Result.Success -> {
-                        setEvent { SignUp.Event.Success }
-                    }
+
+            setEvent { SignUp.Event.Loading }
+
+            when (val result = useCase.signUp(state.value.email, state.value.password)) {
+                is Result.Error -> setEvent { SignUp.Event.Error(result.error) }
+                is Result.Success -> { setEvent { SignUp.Event.Success }
                 }
-            } catch (throwable: Throwable) {
-                setEvent { SignUp.Event.Error(throwable) }
             }
         }
-
     }
 }

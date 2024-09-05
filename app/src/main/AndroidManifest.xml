@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <queries>
+        <package android:name="com.spotify.music" />
+    </queries>
     <application
-        android:allowBackup="true"
         android:name=".application.MyApplication"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -14,30 +17,63 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMusicAppCompose"
         tools:targetApi="31">
+
+        <activity
+            android:name=".presentation.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyMusicAppCompose">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".presentation.welcome.WelcomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyMusicAppCompose" />
+
         <activity
             android:name=".presentation.signin.SignInActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyMusicAppCompose"/>
+            android:theme="@style/Theme.MyMusicAppCompose" />
 
         <activity
             android:name=".presentation.signup.SignUpActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyMusicAppCompose"/>
+            android:theme="@style/Theme.MyMusicAppCompose" />
 
         <activity
-            android:name=".genres.GenresActivity"
+            android:name=".presentation.menu.MenuActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyMusicAppCompose"/>
+            android:theme="@style/Theme.MyMusicAppCompose" />
 
-        <activity android:name=".presentation.welcome.WelcomeActivity"
+        <activity
+            android:name=".presentation.genres.GenresActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyMusicAppCompose">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.MyMusicAppCompose" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".presentation.recommended.RecommendedActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyMusicAppCompose" />
+
+        <activity
+            android:name=".presentation.search.SearchActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyMusicAppCompose" />
+
+        <activity
+            android:name=".presentation.artist.ArtistActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyMusicAppCompose" />
+
+        <activity
+            android:name=".presentation.album.AlbumActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyMusicAppCompose" />
 
     </application>
 

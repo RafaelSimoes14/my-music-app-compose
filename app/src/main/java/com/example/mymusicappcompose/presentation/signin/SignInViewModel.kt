@@ -30,7 +30,12 @@ class SignInViewModel : MVIViewModel<SignIn.State, SignIn.Event, SignIn.Effect, 
                 setEvent { SignIn.Event.ValidPassword(valid) }
                 oldState.copy(password = event.password)
             }
-            is SignIn.Event.Success -> oldState.copy(isLoading = false, isSuccess = true)
+
+            is SignIn.Event.Success -> {
+                setEffect { SignIn.Effect.OnSuccess }
+                oldState.copy(isLoading = false, isSuccess = true)
+            }
+
             is SignIn.Event.Error -> oldState.copy(isLoading = false, error = event.throwable)
             is SignIn.Event.Clear -> oldState.copy(error = null, email = "", password = "")
         }
@@ -46,21 +51,10 @@ class SignInViewModel : MVIViewModel<SignIn.State, SignIn.Event, SignIn.Effect, 
 
     private fun submit() {
         viewModelScope.launch {
-            try {
-                /*if (!Validator.isValidEmail(state.value.email)) {
-               /**
-               Envia evento referente ao erro
-               */
-               setEvent {}
-                }*/
-
-                setEvent { SignIn.Event.Loading }
-                when (val result = useCase.signIn(state.value.email, state.value.password)) {
-                    is Result.Error -> setEvent { SignIn.Event.Error(result.error) }
-                    is Result.Success -> setEvent { SignIn.Event.Success }
-                }
-            } catch (throwable: Throwable) {
-                setEvent { SignIn.Event.Error(throwable) }
+            setEvent { SignIn.Event.Loading }
+            when (val result = useCase.signIn(state.value.email, state.value.password)) {
+                is Result.Error -> setEvent { SignIn.Event.Error(result.error) }
+                is Result.Success -> setEvent { SignIn.Event.Success }
             }
         }
     }

@@ -2,9 +2,7 @@ package com.example.mymusicappcompose.data.local
 
 import android.content.Context
 import com.example.mymusicappcompose.data.keyvalue.KeyValueData
-import com.example.mymusicappcompose.log.logDebug
 import java.lang.ref.WeakReference
-import kotlin.math.exp
 
 class LocalDataSource(context: WeakReference<Context>) {
 
@@ -27,6 +25,7 @@ class LocalDataSource(context: WeakReference<Context>) {
         keyValueData.write(clientSecret, secret)
         return true
     }
+
     fun deleteCredentials() = keyValueData.remove(clientId) && keyValueData.remove(clientSecret)
 
 
@@ -42,7 +41,11 @@ class LocalDataSource(context: WeakReference<Context>) {
         keyValueData.write(spotifyExpiredAt, expiredAt)
         return true
     }
-    fun deleteSpotify() = keyValueData.remove(spotifyAccessToken) && keyValueData.remove(spotifyTokenType) && keyValueData.remove(spotifyExpiredAt  )
+
+    fun deleteSpotify() =
+        keyValueData.remove(spotifyAccessToken) && keyValueData.remove(spotifyTokenType) && keyValueData.remove(
+            spotifyExpiredAt
+        )
 
     companion object {
         private var dataSource: LocalDataSource? = null

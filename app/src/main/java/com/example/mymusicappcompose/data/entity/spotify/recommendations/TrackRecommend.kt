@@ -1,9 +1,5 @@
 package com.example.mymusicappcompose.data.entity.spotify.recommendations
 
-import com.example.mymusicappcompose.data.entity.spotify.recommendations.AlbumRecommend
-import com.example.mymusicappcompose.data.entity.spotify.recommendations.ArtistsRecommend
-import com.example.mymusicappcompose.data.entity.spotify.recommendations.ExternalIds
-import com.example.mymusicappcompose.data.entity.spotify.recommendations.ExternalUrlsRecommend
 import com.google.gson.annotations.SerializedName
 
 data class TrackRecommend(

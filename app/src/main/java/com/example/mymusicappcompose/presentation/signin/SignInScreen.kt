@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -15,15 +16,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mymusicappcompose.R
-import com.example.mymusicappcompose.presentation.componets.MyButton
 import com.example.mymusicappcompose.presentation.componets.GenericDialog
 import com.example.mymusicappcompose.presentation.componets.LoadingDialog
+import com.example.mymusicappcompose.presentation.componets.MyButton
 import com.example.mymusicappcompose.presentation.componets.MyInput
 import com.example.mymusicappcompose.presentation.componets.MyPasswordInput
 import com.example.mymusicappcompose.presentation.componets.MyTitle
+import com.example.mymusicappcompose.ui.preview.DarkModePreview
+import com.example.mymusicappcompose.ui.preview.LightModePreview
 import com.example.mymusicappcompose.ui.theme.MyMusicAppComposeTheme
 import kotlinx.coroutines.flow.collectLatest
 
@@ -48,11 +50,15 @@ fun SignInScreen(
         }
     }
 
-    SignInContent(
-        onState = { state },
-        onIntent = { viewModel.setIntent { it } },
-        onEvent = { viewModel.setEvent { it } }
-    )
+    MyMusicAppComposeTheme {
+        Surface {
+            SignInContent(
+                onState = { state },
+                onIntent = { viewModel.setIntent { it } },
+                onEvent = { viewModel.setEvent { it } }
+            )
+        }
+    }
 }
 
 @Composable
@@ -118,10 +124,13 @@ fun SignInContent(
     }
 }
 
-@Preview
+@LightModePreview
+@DarkModePreview
 @Composable
 fun SignInScreenPreview() {
     MyMusicAppComposeTheme {
-        SignInContent(onState = { SignIn.State.initial() }, {}, {})
+        Surface {
+            SignInContent(onState = { SignIn.State.initial() }, {}, {})
+        }
     }
 }

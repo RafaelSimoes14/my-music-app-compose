@@ -77,6 +77,8 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.gson)
     implementation(libs.converter.scalars)
-    
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
+
 
 }

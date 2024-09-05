@@ -16,4 +16,22 @@
     <string name="genres_title">Genres</string>
     <string name="unable_to_register">Unable to register, please check e-mail!</string>
     <string name="welcome_title">Welcome to MyMusicApp!</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="communication_failure">Communication Failure!</string>
+    <string name="recommendations_title">Music Recommendations</string>
+    <string name="music">Music: %s</string>
+    <string name="albumn">Albumn: </string>
+    <string name="artist">Artist: %s</string>
+    <string name="unable_to_search">Unable to search!</string>
+    <string name="search">Search</string>
+    <string name="search_title">Search</string>
+    <string name="button_close_description">Close button pressed</string>
+    <string name="artist_title">"Artist"</string>
+    <string name="genres">Genres: %s</string>
+    <string name="popularity">Popularity: %s</string>
+    <string name="followers">Followers: %s</string>
+    <string name="album_title">Album</string>
+    <string name="total_tracks">"Number of songs: %s"</string>
+    <string name="album_type">Album Type: %s</string>
+    <string name="release_date">Release Date: %s</string>
 </resources>

@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mymusicappcompose.R
@@ -30,6 +30,8 @@ import com.example.mymusicappcompose.presentation.componets.MyButton
 import com.example.mymusicappcompose.presentation.componets.MyInput
 import com.example.mymusicappcompose.presentation.componets.MyPasswordInput
 import com.example.mymusicappcompose.presentation.componets.MyTitle
+import com.example.mymusicappcompose.ui.preview.DarkModePreview
+import com.example.mymusicappcompose.ui.preview.LightModePreview
 import com.example.mymusicappcompose.ui.theme.MyMusicAppComposeTheme
 import kotlinx.coroutines.flow.collectLatest
 
@@ -47,18 +49,24 @@ fun SignUpScreen(
             when (effect) {
                 is SignUp.Effect.OnBack -> onBack()
                 is SignUp.Effect.OnError -> {}
-                is SignUp.Effect.OnSuccess -> { onSuccess() }
+                is SignUp.Effect.OnSuccess -> {
+                    onSuccess()
+                }
+
                 is SignUp.Effect.OnTerms -> onTerms()
             }
         }
     }
 
-    SignUpContent(
-        onState = { state },
-        onIntent = { viewModel.setIntent { it } },
-        onEvent = { viewModel.setEvent { it } }
-    )
-
+    MyMusicAppComposeTheme {
+        Surface {
+            SignUpContent(
+                onState = { state },
+                onIntent = { viewModel.setIntent { it } },
+                onEvent = { viewModel.setEvent { it } }
+            )
+        }
+    }
 }
 
 @Composable
@@ -153,7 +161,8 @@ fun SignUpContent(
     }
 }
 
-@Preview
+@LightModePreview
+@DarkModePreview
 @Composable
 fun SignUpScreenPreview() {
     MyMusicAppComposeTheme {
