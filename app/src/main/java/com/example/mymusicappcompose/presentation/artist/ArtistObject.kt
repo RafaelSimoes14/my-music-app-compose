@@ -28,6 +28,8 @@ object ArtistObject {
         val albums: List<Album>
     ) : UiState {
 
+        fun getGenres(): String = artist?.genres?.toString()?.replace("[", "")?.replace("]","") ?: ""
+
         companion object {
             fun initial() = State(
                 isLoading = true,

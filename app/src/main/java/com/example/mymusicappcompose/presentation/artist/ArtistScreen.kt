@@ -135,7 +135,7 @@ fun ArtistContent(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 maxLines = 1,
-                text = stringResource(id = R.string.genres, onState().artist?.genres.toString()),
+                text = stringResource(id = R.string.genres, onState().getGenres()),
                 style = TextStyle(textAlign = TextAlign.Center, fontSize = 16.sp),
                 overflow = TextOverflow.Ellipsis
             )
