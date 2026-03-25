@@ -104,14 +104,6 @@ fun MenuContent(
 
             Button(
                 modifier = Modifier.fillMaxWidth(0.5f),
-                onClick = { onIntent(Menu.Intent.OnGenres) }
-            ) {
-                Text(text = stringResource(R.string.genres_title), fontSize = 16.sp)
-                Icon(imageVector = Icons.Default.Audiotrack, contentDescription = null)
-            }
-
-            Button(
-                modifier = Modifier.fillMaxWidth(0.5f),
                 onClick = { onIntent(Menu.Intent.SignOut) }
             ) {
                 Text(text = stringResource(R.string.sign_out), fontSize = 16.sp)
